@@ -10,24 +10,23 @@ defmodule Phello.CardController do
   end
 
   def new(conn, params) do
-    changeset = Card.changeset(%Card{board_id: params["board_id"]})
-    render(conn, "new.html", changeset: changeset)
+    board_id = params["board_id"]
+    changeset = Card.changeset(%Card{board_id: board_id})
+    render(conn, "new.html", changeset: changeset, board_id: board_id)
   end
 
   def create(conn, %{"card" => card_params}) do
-    # TODO - board_id is not being set properly, look up how to properly fix that
     changeset = Card.changeset(%Card{}, card_params)
-    Logger.debug "Changeset: #{inspect(changeset)}"
-    Logger.debug "Data: #{inspect(changeset.data)}"
 
     case Repo.insert(changeset) do
       {:ok, card} ->
-        Logger.debug "Card: #{inspect(card)}"
         conn
         |> put_flash(:info, "Card created successfully.")
         |> redirect(to: board_path(conn, :show, card.board_id))
       {:error, changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        Logger.debug("Changeset: #{inspect(changeset)}")
+        Logger.debug("Data: #{inspect(changeset.data)}")
+        render(conn, "new.html", changeset: changeset, board_id: card_params["board_id"])
     end
   end
 

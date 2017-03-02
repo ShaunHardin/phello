@@ -4,6 +4,7 @@ defmodule Phello.Board do
   schema "boards" do
     field :name, :string
 
+    has_many :cards, Phello.Card
     timestamps()
   end
 

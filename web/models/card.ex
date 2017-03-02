@@ -14,7 +14,7 @@ defmodule Phello.Card do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name, :description])
-    |> validate_required([:name, :description])
+    |> cast(params, [:name, :description, :board_id])
+    |> validate_required([:name, :description, :board_id])
   end
 end

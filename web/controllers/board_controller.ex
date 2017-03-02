@@ -27,7 +27,7 @@ defmodule Phello.BoardController do
   end
 
   def show(conn, %{"id" => id}) do
-    board = Repo.get!(Board, id)
+    board = Repo.get!(Board, id) |> Repo.preload([:cards])
     render(conn, "show.html", board: board)
   end
 
