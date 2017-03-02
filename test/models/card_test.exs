@@ -3,7 +3,7 @@ defmodule Phello.CardTest do
 
   alias Phello.Card
 
-  @valid_attrs %{description: "some content", name: "some content"}
+  @valid_attrs %{description: "some content", name: "some content", board_id: 1}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do
