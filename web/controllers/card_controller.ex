@@ -49,13 +49,13 @@ defmodule Phello.CardController do
       {:ok, card} ->
         conn
         |> put_flash(:info, "Card updated successfully.")
-        #|> redirect(to: card_path(conn, :show, card))
+        |> redirect(to: board_path(conn, :show, card.board_id))
       {:error, changeset} ->
         render(conn, "edit.html", card: card, changeset: changeset)
     end
   end
 
-  def delete(conn, %{"id" => id}) do
+  def delete(conn, %{"id" => id, "board_id" => board_id}) do
     card = Repo.get!(Card, id)
 
     # Here we use delete! (with a bang) because we expect
@@ -64,6 +64,6 @@ defmodule Phello.CardController do
 
     conn
     |> put_flash(:info, "Card deleted successfully.")
-    #|> redirect(to: board_card_path(conn, :index, board_id))
+    |> redirect(to: board_path(conn, :index, board_id))
   end
 end
