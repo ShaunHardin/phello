@@ -1,0 +1,25 @@
+<h2>Show board</h2>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @board.name %>
+  </li>
+</ul>
+<ul>
+<%= for card <- @board.cards do %>
+  <h2>
+    <%= card.name %>
+  </h2>
+  <p>
+    <%= card.description %>
+  </p>
+<% end %>
+</ul>
+
+<%= link "Add card", to: board_card_path(@conn, :new, @board) %>
+<br />
+<%= link "Edit", to: board_path(@conn, :edit, @board) %>
+<br/>
+<%= link "Back", to: board_path(@conn, :index) %>

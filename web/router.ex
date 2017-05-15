@@ -16,7 +16,10 @@ defmodule Phello.Router do
   scope "/", Phello do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", BoardController, :index
+    resources "/boards", BoardController do
+      resources "/cards", CardController
+    end
   end
 
   # Other scopes may use custom stacks.
