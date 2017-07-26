@@ -1,7 +1,7 @@
 defmodule Phello.BoardTest do
-  use Phello.ModelCase
+  use Phello.DataCase
 
-  alias Phello.Board
+  alias Phello.Tracking.Board
 
   @valid_attrs %{name: "some content"}
   @invalid_attrs %{}

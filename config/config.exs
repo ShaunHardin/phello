@@ -10,11 +10,11 @@ config :phello,
   ecto_repos: [Phello.Repo]
 
 # Configures the endpoint
-config :phello, Phello.Endpoint,
+config :phello, PhelloWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "OhHa673Zi+tIx2FEvgTCrcAMO2b06QwZ1+Ks8CEQ+BE7hebPNJitGMUP82+OdXqz",
-  render_errors: [view: Phello.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Phello.PubSub,
+  render_errors: [view: PhelloWeb.ErrorView, accepts: ~w(html json)],
+  pubsub: [name: PhelloWeb.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
