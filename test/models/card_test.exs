@@ -1,7 +1,7 @@
 defmodule Phello.CardTest do
-  use Phello.ModelCase
+  use Phello.DataCase
 
-  alias Phello.Card
+  alias Phello.Tracking.Card
 
   @valid_attrs %{description: "some content", name: "some content", board_id: 1}
   @invalid_attrs %{}
